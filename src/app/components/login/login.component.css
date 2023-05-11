@@ -1,0 +1,53 @@
+.wrapper {
+  position: relative;
+  height: 90dvh;
+}
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--one);
+  padding: 50px;
+  border-radius: 10px;
+  scale: 0.5;
+  animation: 0.5s fadeIn forwards;
+}
+.login form > * {
+  display: block;
+}
+.login input {
+  border-radius: 5px;
+  border: 1px solid black;
+  outline: none;
+  padding: 5px 20px;
+  font-size: 20px;
+  margin: 10px auto;
+  display: block;
+}
+.login button {
+  padding: 5px 20px;
+  font-size: 20px;
+  background-color: var(--two);
+  border: 0;
+  border-radius: 15px;
+  margin: auto;
+  margin-top: 20px;
+  width: 70%;
+}
+.login button:hover {
+  background-color: var(--three);
+}
+.Create {
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  color: var(--five);
+  text-decoration: none;
+}
+
+@keyframes fadeIn {
+  to {
+    scale: 1;
+    opacity: 1;
+  }
+}

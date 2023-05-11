@@ -1,1 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+  /* font-family: "Abril Fatface", cursive; */
+  font-family: "Pathway Extreme", sans-serif;
+}
+:root {
+  --one: #f3efee;
+  --two: #6dd4b9;
+  --three: #8ed9c1;
+  --four: #869782;
+  --five: #427d91;
+}
+body {
+  background-color: var(--five);
+}

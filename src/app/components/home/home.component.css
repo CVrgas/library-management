@@ -1,0 +1,23 @@
+.container {
+}
+.header {
+  color: var(--one);
+}
+.container input {
+  font-size: 20px;
+  padding: 0.2rem;
+  padding-left: 15px;
+  outline: none;
+  border-radius: 5px;
+  font-size: 25px;
+}
+.container button {
+  font-size: 20px;
+  letter-spacing: 1px;
+  background-color: var(--three);
+  outline: none;
+  border: 1px solid black;
+}
+.container button:hover {
+  background-color: var(--two);
+}
