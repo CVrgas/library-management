@@ -16,8 +16,11 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item"></li>
       </ul>
-      <button class="btn" routerLink="login">Log in</button>
-      <button class="btn" routerLink="register">Register</button>
+      <div *ngIf="!log_status">
+        <button class="btn" routerLink="login">Log in</button>
+        <button class="btn" routerLink="register">Register</button>
+      </div>
+      <button class="btn" *ngIf="log_status">Logout</button>
     </div>
   </div>
 </nav>

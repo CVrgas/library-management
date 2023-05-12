@@ -7,6 +7,9 @@ import { HomeComponent } from './components/home/home.component';
 import { NavbarComponent } from './components/smalls/navbar/navbar.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { UserComponent } from './components/user/user.component';
+import { AuthGuard } from './guard/auth.guard';
+import { AuthService } from './service/auth/auth.service';
 
 @NgModule({
   declarations: [
@@ -14,13 +17,11 @@ import { RegisterComponent } from './components/register/register.component';
     HomeComponent,
     NavbarComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    UserComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+  imports: [BrowserModule, AppRoutingModule],
+  providers: [AuthService, AuthGuard],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
