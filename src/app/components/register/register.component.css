@@ -1,50 +1,101 @@
-.container {
-  position: relative;
-  height: 90dvh;
-  scale: 0.5;
-  animation: 0.5s fadeIn forwards;
-}
 .wrapper {
-  background-color: var(--one);
-  padding: 50px;
-  border-radius: 10px;
+  position: relative;
+  background: transparent;
+  border-radius: 15px;
+  width: 700px;
+  height: 900px;
+  opacity: 0;
+  scale: 0.9;
+  animation: 0.5s appear forwards;
 }
 .wrapper form {
+  position: absolute;
+  inset: 1px;
+  background: var(--one);
+  padding: 40px 90px;
+  border-radius: 15px;
+  z-index: 2;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  padding: 10px;
+  gap: 30px;
 }
-.wrapper form input {
-  border-radius: 10px;
+.wrapper form h1 {
+  margin-bottom: 30px;
+  text-align: center;
+  font-size: 50px;
+  text-transform: capitalize;
+}
+.inputbox {
+  position: relative;
+}
+.wrapper form .inputbox input {
   padding: 5px 10px;
-  font-size: 20px;
-  outline: none;
   border: 1px solid black;
+  border-width: 0 0 1px 0;
+  outline: 0;
+  font-size: 25px;
+  background: transparent;
+  width: 100%;
 }
-.wrapper form button {
-  width: 80%;
+.inputbox input::placeholder {
+  text-transform: capitalize;
+}
+.inputbox .error {
+  transition: 0.5s;
+}
+
+.inputbox .error p {
   margin: auto;
-  margin-top: 10px;
-  padding: 5px;
+  padding-left: 5px;
+  color: red;
+  font-size: 13px;
+}
+
+.links {
+  display: flex;
+  justify-content: space-between;
+  text-transform: capitalize;
+  font-size: 20px;
+}
+.submit {
+  position: relative;
+  width: 60%;
+  height: 15%;
+  margin: auto;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.submit input[type="submit"] {
+  position: absolute;
+  inset: 30px;
+  font-weight: 600;
   font-size: 20px;
   letter-spacing: 1px;
   border-radius: 10px;
-  border: 0;
+  color: black;
+
+  background-color: var(--three);
+  transition: 0.3s;
+}
+.submit input[type="submit"]:hover {
   background-color: var(--two);
 }
-.login {
-  margin: auto;
-  text-transform: capitalize;
-  font-size: 20px;
-  text-decoration: none;
-  font-weight: 500;
-  color: var(--five);
-}
-
-@keyframes fadeIn {
-  to {
-    scale: 1;
-    opacity: 1;
+@keyframes appear {
+  from {
+    opacity: 0;
+    scale: 0.9;
   }
+  to {
+    opacity: 1;
+    scale: 1;
+  }
+}
+.Error-text {
+  width: 100%;
+  text-align: center;
+  color: red;
+  font-size: 25px;
+  display: none;
+  animation: 1s appear forwards;
 }

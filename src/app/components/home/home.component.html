@@ -1,11 +1,42 @@
 <div class="container position-absolute top-50 start-50 translate-middle">
-  <h1 class="header">Search</h1>
-  <form action="" class="row">
-    <input
-      type="text"
-      placeholder="Search tittle, year or author"
-      class="col-10"
-    />
-    <button type="submit" class="col">Search</button>
-  </form>
+  <div class="input">
+    <h1 class="header">Search</h1>
+    <div class="SearchBar">
+      <input
+        [(ngModel)]="searchArg"
+        id="input"
+        type="text"
+        placeholder="Search tittle, year or author"
+        class="col-10"
+      />
+      <button type="submit" class="col" (click)="send()">Search</button>
+    </div>
+    <p id="msg">search input empty</p>
+  </div>
+  <!-- result window -->
+  <div class="result" id="result">
+    <!-- 404 -->
+    <div class="notfound hide" id="notfound">
+      <h1>No Found, try again</h1>
+    </div>
+
+    <!-- 200 -->
+    <div class="found hide" id="found">
+      <table class="table table-light">
+        <thead>
+          <th>Title</th>
+          <th>Author</th>
+          <th>Year</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let book of books">
+            <td>{{ book.title }}</td>
+            <td>{{ book.author }}</td>
+            <td>{{ book.year }}</td>
+            <td><button (click)="rent(book.id)">Rent</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>

@@ -1,15 +1,45 @@
 <div class="wrapper">
-  <div class="position-absolute top-50 start-50 translate-middle">
-    <div class="login">
-      <h1>Log In</h1>
-      <form>
-        <input type="email" placeholder="Email" />
-        <input type="password" placeholder="Password" />
-        <a routerLink="/home">forgot password?</a>
-        <button>Log In</button>
-      </form>
-      <hr style="width: 100%" />
-      <a class="Create" routerLink="/register">Create account</a>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <h1>Sign in</h1>
+    <div class="inputbox">
+      <input type="email" placeholder="Email" formControlName="Email" />
+      <p
+        class="error"
+        *ngIf="
+          loginForm.controls['Email'].invalid &&
+          loginForm.controls['Email'].touched
+        "
+      >
+        Enter valid email
+      </p>
     </div>
-  </div>
+    <div class="inputbox">
+      <input
+        type="password"
+        placeholder="Password"
+        required
+        formControlName="Password"
+        id="password"
+      />
+      <p
+        class="error"
+        *ngIf="
+          loginForm.controls['Password'].invalid &&
+          loginForm.controls['Password'].touched
+        "
+      >
+        Please enter password
+      </p>
+    </div>
+    <div class="links">
+      <a href="#">forget password?</a>
+      <a href="/register">sign up</a>
+    </div>
+    <div class="submit">
+      <input class="button" type="submit" value="Login" />
+    </div>
+    <p class="wrongInput" id="wrongInput">
+      wrong password or email, please try again
+    </p>
+  </form>
 </div>

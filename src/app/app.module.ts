@@ -8,8 +8,12 @@ import { NavbarComponent } from './components/smalls/navbar/navbar.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { UserComponent } from './components/user/user.component';
-import { AuthGuard } from './guard/auth.guard';
 import { AuthService } from './service/auth/auth.service';
+import { HttpClientModule } from '@angular/common/http';
+import { SearchResultComponent } from './components/search-result/search-result.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AccountComponent } from './components/account/account.component';
+import { AuthGuard } from './service/auth/auth.guard';
 
 @NgModule({
   declarations: [
@@ -19,8 +23,16 @@ import { AuthService } from './service/auth/auth.service';
     LoginComponent,
     RegisterComponent,
     UserComponent,
+    SearchResultComponent,
+    AccountComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+  ],
   providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent],
 })

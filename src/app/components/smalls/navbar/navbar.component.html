@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="home">Library Management</a>
+    <a class="navbar-brand" routerLink="/home">Library Management</a>
     <button
       class="navbar-toggler"
       type="button"
@@ -16,11 +16,12 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item"></li>
       </ul>
-      <div *ngIf="!log_status">
+      <a routerLink="account" *ngIf="status">My books</a>
+      <div *ngIf="!status">
         <button class="btn" routerLink="login">Log in</button>
         <button class="btn" routerLink="register">Register</button>
       </div>
-      <button class="btn" *ngIf="log_status">Logout</button>
+      <button class="btn" *ngIf="status" (click)="logout()">Logout</button>
     </div>
   </div>
 </nav>

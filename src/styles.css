@@ -2,6 +2,9 @@
 * {
   /* font-family: "Abril Fatface", cursive; */
   font-family: "Pathway Extreme", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 :root {
   --one: #f3efee;
@@ -12,4 +15,8 @@
 }
 body {
   background-color: var(--five);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }

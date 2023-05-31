@@ -2,9 +2,12 @@ import { Book } from './book';
 
 export interface User {
   id: number;
-  firstName: string;
-  lastname: string;
-  password: string;
-  email: string;
-  borrowsbooks: Book[];
+  FirstName: string;
+  Lastname: string;
+  Password: string;
+  Email: string;
+}
+export interface LogInRequest {
+  Email: string;
+  Password: string;
 }

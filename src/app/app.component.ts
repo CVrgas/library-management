@@ -1,11 +1,5 @@
-import {
-  Component,
-  EventEmitter,
-  AfterViewInit,
-  ViewChild,
-  Directive,
-} from '@angular/core';
-import { LoginComponent } from './components/login/login.component';
+import { Component, Directive, OnInit } from '@angular/core';
+import { AuthService } from './service/auth/auth.service';
 
 @Directive({ selector: 'app-login' })
 class applogin {}
@@ -14,10 +8,20 @@ class applogin {}
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent implements AfterViewInit {
+export class AppComponent implements OnInit {
+  constructor(private Auth: AuthService) {
+    Auth.isLoggedIn.subscribe((value) => {
+      this.status = value;
+    });
+  }
+  ngOnInit(): void {
+    if (localStorage.getItem('token')) {
+      this.Auth.logIn(localStorage.getItem('token'));
+      return;
+    }
+    return;
+  }
+
+  status: boolean;
   title = 'library-management';
-  @ViewChild(applogin) AppLogin!: applogin;
-  numero = 1;
-  ngAfterViewInit(): void {}
-  islogged = false;
 }

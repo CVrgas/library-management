@@ -1,15 +1,91 @@
-<div class="container">
-  <div class="wrapper position-absolute top-50 start-50 translate-middle">
-    <h1>Create Account</h1>
-    <form class="">
-      <input type="text" placeholder="First name" />
-      <input type="text" placeholder="Last name" />
-      <input type="email" placeholder="Email" />
-      <input type="password" placeholder="Password" />
-      <input type="password" placeholder="confirm password" />
-      <button type="submit">Create</button>
-    </form>
-    <hr />
-    <a class="login" routerLink="/login">have Account already?</a>
-  </div>
+<div class="wrapper">
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <h1>register</h1>
+    <div class="inputbox">
+      <input type="text" placeholder="first name" formControlName="firstname" />
+      <div class="error">
+        <p
+          *ngIf="
+            registerForm.controls['firstname'].invalid &&
+            registerForm.controls['firstname'].touched
+          "
+        >
+          Enter first name
+        </p>
+      </div>
+    </div>
+    <div class="inputbox">
+      <input type="text" placeholder="last name" formControlName="lastname" />
+      <div class="error">
+        <p
+          *ngIf="
+            registerForm.controls['lastname'].invalid &&
+            registerForm.controls['lastname'].touched
+          "
+        >
+          Enter last name
+        </p>
+      </div>
+    </div>
+    <div class="inputbox">
+      <input type="email" placeholder="email" formControlName="email" />
+      <div class="error">
+        <p
+          *ngIf="
+            registerForm.controls['email'].invalid &&
+            registerForm.controls['email'].touched
+          "
+        >
+          Enter email
+        </p>
+      </div>
+    </div>
+    <div class="inputbox">
+      <input
+        type="password"
+        placeholder="password"
+        formControlName="password"
+      />
+      <div class="error">
+        <p
+          *ngIf="
+            registerForm.controls['password'].invalid &&
+            registerForm.controls['password'].touched
+          "
+        >
+          Enter password
+        </p>
+      </div>
+    </div>
+    <div class="inputbox">
+      <input
+        type="password"
+        placeholder="confirm Password"
+        formControlName="confirmPassword"
+      />
+      <div class="error">
+        <p
+          *ngIf="
+            registerForm.invalid &&
+            registerForm.controls['confirmPassword'].touched
+          "
+        >
+          Please confirm password
+        </p>
+      </div>
+    </div>
+    <div class="links">
+      <a href="#">forget password?</a>
+      <a href="/register">sign up</a>
+    </div>
+    <div class="submit">
+      <input
+        class="button"
+        type="submit"
+        value="Login"
+        [disabled]="registerForm.invalid"
+      />
+    </div>
+    <p id="Error-text" class="Error-text">Email already used</p>
+  </form>
 </div>
