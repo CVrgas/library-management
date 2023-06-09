@@ -1,4 +1,6 @@
-<div class="wrapper">
+<!-- <div
+  class="wrapper container position-absolute top-50 start-50 translate-middle"
+>
   <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <h1>Sign in</h1>
     <div class="inputbox">
@@ -41,5 +43,54 @@
     <p class="wrongInput" id="wrongInput">
       wrong password or email, please try again
     </p>
+  </form>
+</div> -->
+<div class="container-fluid">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <h2>sign in</h2>
+    <div class="email">
+      <input
+        type="text"
+        id="email"
+        placeholder="abc@example.com"
+        class="form-control"
+        formControlName="Email"
+      />
+      <p
+        class="error"
+        *ngIf="
+          loginForm.controls['Email'].invalid &&
+          loginForm.controls['Email'].touched
+        "
+      >
+        Enter valid email
+      </p>
+    </div>
+    <div class="password">
+      <input
+        type="password"
+        id="password"
+        placeholder="Password"
+        class="form-control"
+        formControlName="Password"
+      />
+      <p
+        class="error"
+        *ngIf="
+          loginForm.controls['Password'].invalid &&
+          loginForm.controls['Password'].touched
+        "
+      >
+        Please enter password
+      </p>
+    </div>
+    <p class="notfound" id="wrongInput">
+      wrong password or email, please try again
+    </p>
+    <button type="submit" class="btn">Log In</button>
+    <div class="links">
+      <a href="#">forget password?</a>
+      <a href="/register">Sign Up</a>
+    </div>
   </form>
 </div>

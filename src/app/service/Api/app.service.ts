@@ -28,7 +28,6 @@ export class AppService {
   }
   RentBook(bookId: number) {
     let userId = localStorage.getItem('token');
-    console.log(bookId);
     return this.http.put(`https://localhost:7011/api/${userId}/book`, bookId);
   }
 

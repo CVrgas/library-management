@@ -57,12 +57,15 @@ export class HomeComponent {
     }, 500);
   }
   rent(id: number) {
-    console.log(id);
     this.appService.RentBook(id).subscribe(
       (res) => {
         console.log(res);
       },
       (error) => {
+        if (error.error.text == 'relation already exist') {
+          console.error('book already rented');
+          return;
+        }
         console.log(`Unknown error ocurred: ${error}`);
       }
     );

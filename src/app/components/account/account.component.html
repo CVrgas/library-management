@@ -1,24 +1,28 @@
-<div class="container-custom">
-  <div class="sideBar">
-    <p>Account</p>
-    <p>My Books</p>
-    <p>Setting</p>
-  </div>
-  <div class="MyBooks">
-    <h1>My Books</h1>
+<div class="container">
+  <div class="main">
+    <h2>Borrow books</h2>
     <hr />
-    <div class="table">
-      <div>
-        <h4>title</h4>
-        <h4>author</h4>
-        <h4>description</h4>
-      </div>
-      <hr />
-      <div>
-        <h5>First</h5>
-        <h5>Second</h5>
-        <h5>Third</h5>
-      </div>
-    </div>
+    <table>
+      <thead>
+        <th>Title</th>
+        <th>Author</th>
+        <th>status</th>
+      </thead>
+      <tbody *ngFor="let book of books">
+        <td>{{ book.author }}</td>
+        <td>{{ book.title }}</td>
+        <td>retorned</td>
+      </tbody>
+    </table>
   </div>
+</div>
+
+<div class="account">
+  <form action="" hidden>
+    <input type="text" placeholder="first name" />
+    <input type="text" placeholder="last name" />
+    <input type="text" placeholder="email" />
+    <input type="text" placeholder="password" />
+    <button type="submit">Change</button>
+  </form>
 </div>

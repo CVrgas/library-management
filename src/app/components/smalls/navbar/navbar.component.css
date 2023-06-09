@@ -1,6 +1,18 @@
 .navbar {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
+  background-color: var(--one);
+}
+.navbar-brand {
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+.navbar-nav a {
+  font-weight: 600;
+  text-transform: capitalize;
+  color: var(--five);
+  transition: 0.1s linear;
+}
+.navbar-nav a:hover {
+  color: var(--four);
+  scale: 1.05;
+  text-decoration: underline;
 }

@@ -11,15 +11,22 @@ export class AccountComponent implements OnInit {
   constructor(private service: AppService) {}
   async ngOnInit(): Promise<void> {
     let token = localStorage.getItem('token');
-    console.log(token);
-    await this.service.GetUserBooks(1).subscribe((res) => {
-      let loadBook: any[];
-      res.forEach(async (element) => {
-        await this.service
-          .getBookById(element.bookId)
-          .subscribe((book: Book) => {});
-      });
-    });
+    await this.service.GetUserBooks(parseInt(token)).subscribe(
+      (res) => {
+        res.forEach(async (element) => {
+          await this.service
+            .getBookById(element.bookId)
+            .subscribe((book: Book) => {
+              book.author = book.author.replace('--', ', ');
+              book.author = book.author.replace(/[-]/g, ', ');
+              this.books.push(book);
+            });
+        });
+      },
+      (error) => {
+        console.error('fail to load any book');
+      }
+    );
   }
-  books: Book[];
+  books: Book[] = [];
 }

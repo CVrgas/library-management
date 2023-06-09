@@ -33,7 +33,12 @@
             <td>{{ book.title }}</td>
             <td>{{ book.author }}</td>
             <td>{{ book.year }}</td>
-            <td><button (click)="rent(book.id)">Rent</button></td>
+            <td>
+              <button (click)="rent(book.id)">borrow physical copy</button>
+            </td>
+            <td>
+              <button>Download</button>
+            </td>
           </tr>
         </tbody>
       </table>

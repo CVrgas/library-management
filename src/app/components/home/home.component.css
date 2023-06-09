@@ -38,7 +38,19 @@
   background-color: transparent;
   font-size: 25px;
 }
-
+.table {
+  font-size: 15px;
+  width: 100%;
+}
+.table button {
+  border: 0;
+  color: blue;
+  text-decoration: underline;
+  background-color: transparent;
+}
+.table button:hover {
+  color: rgb(73, 73, 255);
+}
 .result {
   background-color: var(--one);
   border-radius: 10px;
@@ -53,6 +65,7 @@
 .found {
   max-height: 99%;
   overflow: auto;
+  width: 100%;
 }
 .hide {
   display: none;

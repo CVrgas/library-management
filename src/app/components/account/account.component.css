@@ -1,25 +1,30 @@
-.container-custom {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
+.container {
+  width: 100%;
+  min-height: 50dvh;
   background-color: var(--one);
-  margin: auto;
-  width: 90%;
-  margin-top: 50px;
-  justify-content: space-between;
+  border-radius: 5px;
 }
-.sideBar {
-  width: 30%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+
+.main {
+  padding: 15px;
+  flex-grow: 3;
 }
-.MyBooks {
-  width: 70%;
+.main table {
+  width: 100%;
 }
-.table div {
-  display: flex;
-  justify-content: space-around;
+.main table thead th {
+  border: 1px solid black;
+}
+.main table tbody td {
+  border: 1px solid black;
+}
+.main table tbody button {
+  background-color: transparent;
+  border: 0;
+  color: rgb(190, 0, 0);
+}
+
+.main table tbody button:hover {
+  text-decoration: underline;
+  color: red;
 }

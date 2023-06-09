@@ -1,4 +1,10 @@
-import { AfterContentInit, Component, Input, OnInit } from '@angular/core';
+import {
+  AfterContentInit,
+  AfterViewInit,
+  Component,
+  Input,
+  OnInit,
+} from '@angular/core';
 import { Router } from '@angular/router';
 import { AccountService } from 'src/app/service/account/account.service';
 import { AuthService } from 'src/app/service/auth/auth.service';
@@ -8,8 +14,10 @@ import { AuthService } from 'src/app/service/auth/auth.service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'],
 })
-export class NavbarComponent {
+export class NavbarComponent implements AfterViewInit {
   constructor(private router: Router, private Auth: AuthService) {}
+  ngAfterViewInit(): void {
+  }
 
   @Input() status;
 
