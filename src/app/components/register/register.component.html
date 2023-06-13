@@ -1,93 +1,119 @@
-<div
-  class="wrapper container position-absolute top-50 start-50 translate-middle"
->
+<div class="container-fluid">
   <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-    <h1>register</h1>
-    <div class="inputbox">
-      <input type="text" placeholder="first name" formControlName="firstname" />
-      <div class="error">
+    <h2>Sign up</h2>
+    <div class="name">
+      <div class="first">
+        <input
+          type="text"
+          id="firstname"
+          placeholder="first name"
+          class="form-control"
+          formControlName="firstname"
+          required
+        />
         <p
+          class="InputError"
           *ngIf="
             registerForm.controls['firstname'].invalid &&
             registerForm.controls['firstname'].touched
           "
         >
-          Enter first name
+          first name is required
         </p>
       </div>
-    </div>
-    <div class="inputbox">
-      <input type="text" placeholder="last name" formControlName="lastname" />
-      <div class="error">
+      <div class="last">
+        <input
+          type="text"
+          id="lastname"
+          placeholder="last name"
+          class="form-control"
+          formControlName="lastname"
+          required
+        />
         <p
+          class="InputError"
           *ngIf="
             registerForm.controls['lastname'].invalid &&
             registerForm.controls['lastname'].touched
           "
         >
-          Enter last name
+          last name is required
         </p>
       </div>
     </div>
-    <div class="inputbox">
-      <input type="email" placeholder="email" formControlName="email" />
-      <div class="error">
-        <p
-          *ngIf="
-            registerForm.controls['email'].invalid &&
-            registerForm.controls['email'].touched
-          "
-        >
-          Enter email
-        </p>
-      </div>
+    <div class="email">
+      <input
+        type="email"
+        id="email"
+        placeholder="abc@example.com"
+        class="form-control"
+        formControlName="email"
+        required
+      />
+      <p
+        class="InputError"
+        *ngIf="
+          registerForm.controls['email'].invalid &&
+          registerForm.controls['email'].touched
+        "
+      >
+        invalid email
+      </p>
     </div>
-    <div class="inputbox">
+    <div class="password">
       <input
         type="password"
-        placeholder="password"
+        id="password"
+        placeholder="Password"
+        class="form-control"
         formControlName="password"
+        required
       />
-      <div class="error">
-        <p
-          *ngIf="
-            registerForm.controls['password'].invalid &&
-            registerForm.controls['password'].touched
-          "
-        >
-          Enter password
-        </p>
-      </div>
+      <p
+        class="InputError"
+        *ngIf="
+          registerForm.controls['password'].invalid &&
+          registerForm.controls['password'].touched
+        "
+      >
+        enter pasword
+      </p>
     </div>
-    <div class="inputbox">
+    <div class="password">
       <input
         type="password"
-        placeholder="confirm Password"
+        id="confirmPassword"
+        placeholder="Password"
+        class="form-control"
         formControlName="confirmPassword"
+        required
       />
-      <div class="error">
-        <p
-          *ngIf="
-            registerForm.invalid &&
-            registerForm.controls['confirmPassword'].touched
-          "
-        >
-          Please confirm password
-        </p>
-      </div>
+      <p
+        class="InputError"
+        *ngIf="
+          registerForm.controls['confirmPassword'].invalid &&
+          registerForm.controls['confirmPassword'].touched
+        "
+      >
+        enter pasword
+      </p>
+      <p
+        class="InputError"
+        *ngIf="
+          registerForm.errors?.['NotSame'] &&
+          registerForm.controls['password'].valid &&
+          registerForm.controls['confirmPassword'].valid
+        "
+      >
+        no same password
+      </p>
     </div>
+    <p class="errorMsg" id="errorMsg"></p>
+    <button type="submit" class="btn">Log In</button>
+    <hr />
     <div class="links">
-      <a href="#">forget password?</a>
-      <a href="/register">sign up</a>
+      <a href="login">have account?</a>
+      <a href="/register">Sign Up</a>
     </div>
-    <div class="submit">
-      <input
-        class="button"
-        type="submit"
-        value="Login"
-        [disabled]="registerForm.invalid"
-      />
-    </div>
-    <p id="Error-text" class="Error-text">Email already used</p>
   </form>
 </div>

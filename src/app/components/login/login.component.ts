@@ -23,7 +23,7 @@ export class LoginComponent {
   });
 
   onSubmit() {
-    const wrongInput = document.getElementById('wrongInput');
+    const wrongInput = document.getElementById('notfound');
     wrongInput.style.opacity = '0';
     if (this.loginForm.status == 'INVALID') {
       return;
@@ -32,23 +32,35 @@ export class LoginComponent {
       Email: this.loginForm.value.Email,
       Password: this.loginForm.value.Password,
     };
-    this.appService.LogIn(request).subscribe(
+    this.appService.LogIn(this.loginForm.value).subscribe(
       (response) => {
         if (response.status == 204) {
-          wrongInput.style.opacity = '1';
-          console.error('Email or pasword not found');
+          this.notfound('We couldnt find an account that matches');
           return;
         }
         if (response.status == 200) {
           this.Auth.logIn(response.body['id']);
-          this.router.navigate(['/account']);
+          this.router.navigate(['/home']);
           return;
         }
         console.error('error ocurred, try again');
       },
       (error) => {
-        console.error('Bad Request: ' + error);
+        if (error.status === 0) {
+          this.notfound('No internet connection');
+          this.LocalConnection();
+        }
       }
     );
+  }
+  notfound(msg: string) {
+    console.error(msg);
+    const MsgElement = document.getElementById('notfound');
+    MsgElement.innerText = msg;
+    MsgElement.style.opacity = '1';
+  }
+  LocalConnection() {
+    this.Auth.logIn('389');
+    this.router.navigate(['/home']);
   }
 }

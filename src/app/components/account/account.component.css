@@ -1,30 +1,67 @@
-.container {
-  width: 100%;
-  min-height: 50dvh;
+.my-pagiantion {
   background-color: var(--one);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.my-pagiantion .item {
+  padding: 5px;
+  transition: 0.5s;
+}
+
+.my-pagiantion .item:hover {
+  transform: scale(1.1);
+}
+.newdiv {
+  display: flex;
+  justify-content: center;
+  padding: 5px;
   border-radius: 5px;
-}
-
-.main {
-  padding: 15px;
-  flex-grow: 3;
-}
-.main table {
-  width: 100%;
-}
-.main table thead th {
+  background-color: white;
   border: 1px solid black;
+  width: max-content;
 }
-.main table tbody td {
-  border: 1px solid black;
+.page-link {
+  cursor: pointer;
 }
-.main table tbody button {
-  background-color: transparent;
+.newdiv input {
+  outline: none;
   border: 0;
-  color: rgb(190, 0, 0);
+}
+.newdiv button {
+  margin: auto;
+  padding: 2px 10px;
+  border: 1px solid black;
+  transition: 0.5s;
+}
+.newdiv button:hover {
+  background-color: black;
+  color: white;
 }
 
-.main table tbody button:hover {
-  text-decoration: underline;
-  color: red;
+.status {
+  background-color: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(100px);
+  width: max-content;
+  padding: 10px 30px;
+  border-radius: 10px;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+.status p {
+  width: 100%;
+  text-align: start;
+  text-transform: capitalize;
+  font-weight: 600;
+}
+.status p span {
+  color: green;
+  animation: 1s underline infinite;
+  font-size: 20px;
+}
+@keyframes underline {
+  to {
+    text-decoration: underline;
+  }
 }

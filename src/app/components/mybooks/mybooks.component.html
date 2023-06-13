@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="main">
+    <h2>Borrow books</h2>
+    <hr />
+    <!-- <table>
+        <thead>
+          <th>Title</th>
+          <th>Author</th>
+          <th>status</th>
+        </thead>
+        <tbody *ngFor="let book of books">
+          <td>{{ book.author }}</td>
+          <td>{{ book.title }}</td>
+          <td>retorned</td>
+        </tbody>
+      </table> -->
+    <!-- <div class="test">
+        <input type="number" [(ngModel)]="id" />
+        <button (click)="OpenBook()">Open</button>
+      </div> -->
+    <div class="header">
+      <p class="title">title</p>
+      <p class="author">author</p>
+      <p class="status">status</p>
+    </div>
+    <div class="booklist">
+      <div class="book" *ngFor="let book of books" (click)="showDetails(book)">
+        <p class="title">{{ book.title }}</p>
+        <p class="author">{{ book.author }}</p>
+        <p class="status">status</p>
+      </div>
+    </div>
+  </div>
+</div>
+<app-book [book]="book" (close)="onClose()" *ngIf="book"></app-book>

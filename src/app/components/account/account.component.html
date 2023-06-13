@@ -1,28 +1,28 @@
-<div class="container">
-  <div class="main">
-    <h2>Borrow books</h2>
-    <hr />
-    <table>
-      <thead>
-        <th>Title</th>
-        <th>Author</th>
-        <th>status</th>
-      </thead>
-      <tbody *ngFor="let book of books">
-        <td>{{ book.author }}</td>
-        <td>{{ book.title }}</td>
-        <td>retorned</td>
-      </tbody>
-    </table>
+<nav aria-label="Page navigation example">
+  <div class="my-pagiantion">
+    <div class="item" *ngFor="let item of items">
+      {{ item.text }}
+    </div>
   </div>
-</div>
+  <ul class="pagination">
+    <li class="page-item">
+      <a class="page-link" (click)="previous()">Previous</a>
+    </li>
+    <li class="page-item"><a class="page-link" (click)="next()">Next</a></li>
+  </ul>
+</nav>
 
-<div class="account">
-  <form action="" hidden>
-    <input type="text" placeholder="first name" />
-    <input type="text" placeholder="last name" />
-    <input type="text" placeholder="email" />
-    <input type="text" placeholder="password" />
-    <button type="submit">Change</button>
-  </form>
+<div class="status">
+  <p>
+    page: <span>{{ actual_page }}</span>
+  </p>
+  <p>
+    per page: <span>{{ ItemPerPage }}</span>
+  </p>
+  <p>
+    items length: <span>{{ items.length }}</span>
+  </p>
+  <p>
+    Math: <span>{{ items.length / ItemPerPage }}</span>
+  </p>
 </div>

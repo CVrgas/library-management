@@ -12,6 +12,7 @@
   --three: #8ed9c1;
   --four: #869782;
   --five: #427d91;
+  --test-color: #121c1c;
 }
 body {
   background-color: var(--five);

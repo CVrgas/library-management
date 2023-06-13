@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {
   AbstractControl,
+  FormArray,
   FormControl,
   FormGroup,
   ValidationErrors,
@@ -11,6 +12,7 @@ import { AppService } from '../../service/Api/app.service';
 import { LogInRequest, User } from '../../Models/user';
 import { AuthService } from 'src/app/service/auth/auth.service';
 import { Router } from '@angular/router';
+import { from } from 'rxjs';
 
 @Component({
   selector: 'app-register',
@@ -24,7 +26,7 @@ export class RegisterComponent {
     private router: Router
   ) {}
 
-  MathPass: ValidatorFn = (
+  MatchPass: ValidatorFn = (
     control: AbstractControl
   ): ValidationErrors | null => {
     let password = control.get('password');
@@ -48,12 +50,17 @@ export class RegisterComponent {
       confirmPassword: new FormControl(null),
     },
     {
-      validators: this.MathPass,
+      validators: this.MatchPass,
     }
   );
 
   onSubmit() {
-    const errortext = document.getElementById('Error-text');
+    console.log(JSON.stringify(this.registerForm.value));
+    if (this.registerForm.invalid) {
+      console.log(this.registerForm);
+      console.log('invalid');
+      return;
+    }
     let newUser: User = {
       id: 0,
       FirstName: this.registerForm.controls['firstname'].value,
@@ -61,8 +68,7 @@ export class RegisterComponent {
       Email: this.registerForm.controls['email'].value,
       Password: this.registerForm.controls['confirmPassword'].value,
     };
-
-    this.service.SignUp(newUser).subscribe(
+    this.service.SignUp(JSON.stringify(this.registerForm.value)).subscribe(
       (response) => {
         if (response.status == 200) {
           console.log('account created');
@@ -82,9 +88,22 @@ export class RegisterComponent {
         }
       },
       (error) => {
-        errortext.style.display = 'block';
-        console.log(error);
+        if (error.status === 0) {
+          this.notFound('No internet connection');
+          return;
+        }
+        if (error.status === 415) {
+          this.notFound('email address already register');
+          return;
+        }
+        console.error('Unexpected error');
       }
     );
+  }
+
+  notFound(Msg: string) {
+    console.error(Msg);
+    const MsgElement = document.getElementById('errorMsg');
+    MsgElement.innerText = Msg;
   }
 }

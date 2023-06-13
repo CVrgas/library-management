@@ -31,13 +31,13 @@ export class AppService {
     return this.http.put(`https://localhost:7011/api/${userId}/book`, bookId);
   }
 
-  LogIn(request: LogInRequest) {
+  LogIn(request: any) {
     return this.http.post('https://localhost:7011/api/user/login', request, {
       observe: 'response',
     });
   }
 
-  SignUp(request: User) {
+  SignUp(request: any) {
     return this.http.put('https://localhost:7011/api/user/signup', request, {
       observe: 'response',
     });

@@ -11,7 +11,7 @@
   align-items: center;
   gap: 10px;
   border-radius: 15px;
-  max-width: 500px;
+  max-width: 400px;
 }
 .container-fluid form h2 {
   text-transform: capitalize;
@@ -27,7 +27,10 @@
 }
 .notfound {
   opacity: 0;
-  transition: 1s;
+  transition: 0.2s;
+  color: rgb(205, 40, 40);
+  border: 1px solid lime;
+  margin-bottom: 0;
 }
 .btn {
   color: black;
@@ -42,15 +45,18 @@
   background-color: var(--three);
 }
 .links {
-  width: 60%;
+  width: 80%;
   display: flex;
+  margin: 10px 0;
   justify-content: space-between;
 }
-.error {
+
+.InputError {
   width: max-content;
   color: rgb(205, 40, 40);
-  animation: ShowError 0.3s linear;
+  animation: ShowError 0.1s linear;
 }
+
 @keyframes ShowError {
   from {
     opacity: 0;

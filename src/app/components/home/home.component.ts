@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { timeout } from 'rxjs';
@@ -21,14 +22,21 @@ export class HomeComponent {
     if (this.searchArg == '') {
       return;
     }
-    this.appService.GetBookByArg(this.searchArg).subscribe((Response) => {
-      if (Response.length <= 0) {
-        this.notfound();
-        return;
+    this.appService.GetBookByArg(this.searchArg).subscribe(
+      (Response) => {
+        if (Response.length <= 0) {
+          this.notfound();
+          return;
+        }
+        this.found(Response.length);
+        this.books = Response;
+      },
+      (e: HttpErrorResponse) => {
+        if (e.status === 0) {
+          this.ErrorMsg('no internet connection');
+        }
       }
-      this.found(Response.length);
-      this.books = Response;
-    });
+    );
   }
 
   notfound() {
@@ -48,7 +56,7 @@ export class HomeComponent {
     const notfound = document.getElementById('notfound');
     const found = document.getElementById('found');
 
-    result.style.height = `${height * 100}px`;
+    result.style.height = `${height * 120}px`;
     result.style.padding = '20px';
     notfound.classList.replace('show', 'hide');
 
@@ -69,5 +77,10 @@ export class HomeComponent {
         console.log(`Unknown error ocurred: ${error}`);
       }
     );
+  }
+  ErrorMsg(text: string) {
+    const msgElement = document.getElementById('msg');
+    msgElement.innerText = text;
+    msgElement.style.opacity = '1';
   }
 }

@@ -1,101 +1,108 @@
-.wrapper {
-  position: relative;
-  background: transparent;
-  border-radius: 15px;
-  width: 700px;
-  height: 900px;
-  opacity: 0;
-  scale: 0.9;
-  animation: 0.5s appear forwards;
+.container-fluid {
+  max-width: 80%;
+  padding-top: 60px;
 }
-.wrapper form {
-  position: absolute;
-  inset: 1px;
-  background: var(--one);
-  padding: 40px 90px;
-  border-radius: 15px;
-  z-index: 2;
+.container-fluid form {
+  margin: auto;
+  background-color: var(--one);
+  padding: 30px 40px;
   display: flex;
   flex-direction: column;
-  gap: 30px;
-}
-.wrapper form h1 {
-  margin-bottom: 30px;
-  text-align: center;
-  font-size: 50px;
-  text-transform: capitalize;
-}
-.inputbox {
-  position: relative;
-}
-.wrapper form .inputbox input {
-  padding: 5px 10px;
-  border: 1px solid black;
-  border-width: 0 0 1px 0;
-  outline: 0;
-  font-size: 25px;
-  background: transparent;
-  width: 100%;
-}
-.inputbox input::placeholder {
-  text-transform: capitalize;
-}
-.inputbox .error {
-  transition: 0.5s;
-}
-
-.inputbox .error p {
-  margin: auto;
-  padding-left: 5px;
-  color: red;
-  font-size: 13px;
-}
-
-.links {
-  display: flex;
-  justify-content: space-between;
-  text-transform: capitalize;
-  font-size: 20px;
-}
-.submit {
-  position: relative;
-  width: 60%;
-  height: 15%;
-  margin: auto;
-  overflow: hidden;
+  gap: 15px;
   border-radius: 10px;
+  max-width: 600px;
+}
+.container-fluid form h2 {
+  text-transform: capitalize;
+  margin-bottom: 20px;
 }
 
-.submit input[type="submit"] {
-  position: absolute;
-  inset: 30px;
+.name input,
+.email input,
+.password input {
+  font-size: 20px;
+  border-radius: 0;
+  padding: 10px 20px;
+  border: 1px solid var(--four);
+  border-radius: 5px;
+  background-color: transparent;
+}
+
+.notfound {
+  opacity: 0;
+  transition: 1s;
+}
+.btn {
+  color: black;
   font-weight: 600;
   font-size: 20px;
-  letter-spacing: 1px;
-  border-radius: 10px;
-  color: black;
-
-  background-color: var(--three);
-  transition: 0.3s;
-}
-.submit input[type="submit"]:hover {
+  width: 60%;
   background-color: var(--two);
+  padding: 10px 20px;
+  border-radius: 10px;
+  margin: auto;
 }
-@keyframes appear {
+.btn:hover {
+  background-color: var(--three);
+}
+.links {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+}
+.error {
+  width: max-content;
+  color: rgb(205, 40, 40);
+  animation: ShowError 0.3s linear;
+}
+@media screen and (max-width: 600px) {
+  .name input,
+  .email input,
+  .password input {
+    font-size: 15px;
+    padding: 5px;
+  }
+  .btn {
+    font-size: 15px;
+  }
+  .links {
+    font-size: 10px;
+  }
+}
+@keyframes ShowError {
   from {
     opacity: 0;
-    scale: 0.9;
-  }
-  to {
-    opacity: 1;
-    scale: 1;
   }
 }
-.Error-text {
-  width: 100%;
-  text-align: center;
+.name {
+  display: flex;
+  justify-content: space-between;
+}
+
+.name div {
+  width: 48%;
+  display: flex;
+  flex-direction: column;
+}
+.InputError {
+  margin-bottom: 0;
   color: red;
-  font-size: 25px;
-  display: none;
-  animation: 1s appear forwards;
+  text-align: start;
+  text-transform: capitalize;
+  padding-left: 5px;
 }
+
+.errorMsg {
+  color: rgb(190, 11, 11);
+  font-weight: 600;
+  text-transform: capitalize;
+  margin-bottom: 0;
+  transition: 0.2s;
+}
+
+.password,
+.email {
+  width: 100%;
+}
+

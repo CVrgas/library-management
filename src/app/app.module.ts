@@ -14,6 +14,8 @@ import { SearchResultComponent } from './components/search-result/search-result.
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AccountComponent } from './components/account/account.component';
 import { AuthGuard } from './service/auth/auth.guard';
+import { BookComponent } from './components/smalls/book/book.component';
+import { MybooksComponent } from './components/mybooks/mybooks.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import { AuthGuard } from './service/auth/auth.guard';
     UserComponent,
     SearchResultComponent,
     AccountComponent,
+    BookComponent,
+    MybooksComponent,
   ],
   imports: [
     BrowserModule,

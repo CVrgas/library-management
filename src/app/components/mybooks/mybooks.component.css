@@ -1,0 +1,71 @@
+.container {
+  width: 100%;
+  min-height: 50dvh;
+  background-color: var(--one);
+  border-radius: 5px;
+  animation: 0.3s Show linear;
+  position: relative;
+}
+.main {
+  padding: 15px;
+  flex-grow: 3;
+}
+.booklist {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.book {
+  animation: 1s drop linear;
+  transition: 0.1s linear;
+  display: flex;
+  background-color: rgba(142, 217, 193, 0.5);
+  padding: 10px 50px;
+  border-radius: 10px;
+  box-shadow: 5px 5px 10px #bebaba, -5px -5px 10px #ffffff;
+  cursor: pointer;
+}
+.book:active {
+  animation: 1s clicked linear;
+}
+.book:hover {
+  transform: scale(1.02);
+}
+.book > p {
+  margin: auto;
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 5px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  padding: 10px 10px 10px;
+}
+.book .author,
+.book .title {
+  width: 45%;
+  text-align: start;
+}
+.book .status {
+}
+.header {
+  display: flex;
+  text-transform: capitalize;
+  font-size: 20px;
+}
+.header .title,
+.header .author {
+  width: 45%;
+}
+@keyframes Show {
+  from {
+    scale: 0.8;
+  }
+}
+@keyframes clicked {
+  50% {
+    transform: scaleX(0.8);
+  }
+  100% {
+    transform: scaleX(1.1);
+  }
+}

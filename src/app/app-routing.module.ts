@@ -7,6 +7,7 @@ import { AuthGuard } from './service/auth/auth.guard';
 
 import { AccountComponent } from './components/account/account.component';
 import { UserComponent } from './components/user/user.component';
+import { MybooksComponent } from './components/mybooks/mybooks.component';
 
 const routes: Routes = [
   {
@@ -26,13 +27,13 @@ const routes: Routes = [
     component: RegisterComponent,
   },
   {
-    path: 'account',
-    component: AccountComponent,
+    path: 'mybooks',
+    component: MybooksComponent,
     canActivate: [AuthGuard],
   },
   {
-    path: 'user',
-    component: UserComponent,
+    path: 'account',
+    component: AccountComponent,
     canActivate: [AuthGuard],
   },
 ];

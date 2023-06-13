@@ -15,10 +15,12 @@
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
       <div class="navbar-nav">
         <a class="nav-link" href="login" *ngIf="!status">Log in</a>
-        <a class="nav-link" href="register" *ngIf="!status">Sign in</a>
-        <a class="nav-link" href="login" *ngIf="status">account</a>
-        <a class="nav-link" href="register" *ngIf="status">my books</a>
-        <a class="nav-link" href="login" *ngIf="status">Sign out</a>
+        <a class="nav-link" href="register" *ngIf="!status">Sign up</a>
+        <a class="nav-link" href="account" *ngIf="status">account</a>
+        <a class="nav-link" href="mybooks" *ngIf="status">my books</a>
+        <a class="nav-link" href="login" *ngIf="status" (click)="logout()"
+          >Sign out</a
+        >
       </div>
     </div>
   </div>
