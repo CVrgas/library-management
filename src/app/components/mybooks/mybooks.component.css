@@ -5,17 +5,32 @@
   border-radius: 5px;
   animation: 0.3s Show linear;
   position: relative;
+  font-size: 50px;
+}
+.header {
+  display: flex;
+  text-transform: capitalize;
+  font-size: 0.45em;
+  gap: 5px;
+}
+.header .title,
+.header .author {
+  width: 40%;
+}
+.header .status {
+  width: 10%;
+  text-align: end;
 }
 .main {
   padding: 15px;
   flex-grow: 3;
 }
-.booklist {
+.main .booklist {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
-.book {
+.main .book {
   animation: 1s drop linear;
   transition: 0.1s linear;
   display: flex;
@@ -24,14 +39,15 @@
   border-radius: 10px;
   box-shadow: 5px 5px 10px #bebaba, -5px -5px 10px #ffffff;
   cursor: pointer;
+  gap: 5px;
 }
-.book:active {
+.main.book:active {
   animation: 1s clicked linear;
 }
-.book:hover {
+.main .book:hover {
   transform: scale(1.02);
 }
-.book > p {
+.main .book > p {
   margin: auto;
   background-color: rgba(255, 255, 255, 0.4);
   border-radius: 5px;
@@ -39,22 +55,80 @@
   white-space: nowrap;
   overflow: hidden;
   padding: 10px 10px 10px;
+  font-size: 0.45em;
 }
-.book .author,
-.book .title {
-  width: 45%;
+.main .book .author,
+.main .book .title {
+  width: 40%;
   text-align: start;
 }
 .book .status {
 }
-.header {
-  display: flex;
-  text-transform: capitalize;
-  font-size: 20px;
+
+.small {
+  width: 95%;
+  margin: 0 auto;
+  display: none;
 }
-.header .title,
-.header .author {
+.small h1 {
+  text-align: start;
+  font-size: 0.8em;
+}
+.small .booklist {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow: hidden;
+}
+.small .booklist .book {
+  display: flex;
+  position: relative;
+  flex-wrap: wrap;
+  padding: 10px 0;
+  justify-content: flex-start;
+  gap: 10px;
+  /* background: linear-gradient(
+    45deg,
+    rgb(0, 20, 33),
+    rgb(0, 26, 43),
+    rgb(0, 51, 84)
+  ); */
+  background-color: rgba(142, 217, 193, 0.5);
+  border-radius: 5px;
+  overflow: hidden;
+}
+.small .booklist .book p:first-child {
+  width: 100%;
+}
+.small .booklist .book p {
   width: 45%;
+  font-size: 0.4em;
+  padding: 0 15px;
+  text-align: start;
+}
+.small .booklist .book span {
+  text-transform: capitalize;
+  font-size: 0.8em;
+  font-weight: 700;
+}
+.small .booklist .book span::after {
+  content: "\a";
+  white-space: pre;
+}
+@media screen and (max-width: 600px) {
+  .container {
+    width: 100%;
+    height: 95%;
+    animation: none;
+    border-radius: 0;
+    padding: 10px 0;
+  }
+  .small {
+    display: block;
+  }
+  .main {
+    display: none;
+  }
 }
 @keyframes Show {
   from {

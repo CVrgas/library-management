@@ -1,28 +1,5 @@
-<nav aria-label="Page navigation example">
-  <div class="my-pagiantion">
-    <div class="item" *ngFor="let item of items">
-      {{ item.text }}
-    </div>
-  </div>
-  <ul class="pagination">
-    <li class="page-item">
-      <a class="page-link" (click)="previous()">Previous</a>
-    </li>
-    <li class="page-item"><a class="page-link" (click)="next()">Next</a></li>
-  </ul>
-</nav>
-
-<div class="status">
-  <p>
-    page: <span>{{ actual_page }}</span>
-  </p>
-  <p>
-    per page: <span>{{ ItemPerPage }}</span>
-  </p>
-  <p>
-    items length: <span>{{ items.length }}</span>
-  </p>
-  <p>
-    Math: <span>{{ items.length / ItemPerPage }}</span>
-  </p>
-</div>
+<app-small-bookdetail
+  [book]="book"
+  (action)="say($event)"
+></app-small-bookdetail>
+<app-book [book]="book"></app-book>

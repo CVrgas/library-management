@@ -3,6 +3,7 @@ export interface Book {
   title: string;
   year: number;
   author: string;
+  description: string;
   genres: string;
 }
 export interface Relation {

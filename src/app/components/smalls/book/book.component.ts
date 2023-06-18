@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Book } from 'src/app/Models/book';
 
 @Component({
   selector: 'app-book',
@@ -6,7 +7,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./book.component.css'],
 })
 export class BookComponent {
-  @Input() book;
+  @Input() book: Book;
   @Output() close = new EventEmitter();
   closeWindow() {
     this.close.emit();

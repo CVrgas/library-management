@@ -1,17 +1,25 @@
 .container {
-}
-.header {
-  color: var(--one);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 .SearchBar {
-  padding: 10px;
+  border: 1px solid black;
   border-radius: 10px;
   background-color: var(--one);
   position: relative;
   overflow: hidden;
+  display: flex;
 }
 .SearchBar input {
-  width: 100%;
+  width: 94%;
+  font-size: 20px;
+  padding: 10px 25px;
+  outline: none;
+  background-color: transparent;
+  font-size: 25px;
+  margin-left: 0;
+  border: 0;
 }
 .SearchBar button {
   position: absolute;
@@ -19,71 +27,51 @@
   top: 0;
   bottom: 0;
   font-size: 20px;
-  font-weight: 600;
   background-color: var(--three);
-  padding: 10px 25px;
+  padding: 0 25px;
   border-radius: 0;
-  transition: 0.1s;
+  transition: 0.2s;
+  border: 0;
 }
 .SearchBar button:active {
-  transform: scale(0.95);
-}
-.SearchBar input {
-  font-size: 20px;
-  padding: 0.2rem;
-  padding-left: 15px;
-  outline: none;
-  border: 0;
-  background-color: transparent;
-  font-size: 25px;
+  color: var(--three);
+  background-color: var(--one);
 }
 .msg {
-  color: red;
+  padding: 15px 0;
+  color: rgb(239, 115, 115);
   font-size: 20px;
-  width: 100%;
-  text-align: center;
   font-weight: 600;
+  text-transform: capitalize;
   opacity: 0;
-  transition: 0.1s;
+  transition: 0.3s;
 }
-.table {
-  font-size: 15px;
-  width: 100%;
-}
-.table button {
-  border: 0;
-  color: blue;
-  text-decoration: underline;
-  background-color: transparent;
-}
-.table button:hover {
-  color: rgb(73, 73, 255);
-}
+
 .result {
   background-color: var(--one);
   border-radius: 10px;
-  max-height: 70dvh;
-  height: 0;
-  transition: 1s ease-in-out;
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  height: 0;
+  padding: 20px;
+  transition: 1s ease-in-out;
 }
-.found {
-  max-height: 99%;
-  overflow: auto;
+.result .notfound {
+}
+.result .found {
   width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  justify-content: center;
+  gap: 20px;
+  height: 100%;
+  overflow-y: scroll;
 }
-.hide {
-  display: none;
-  opacity: 0;
-  transition: 0.5s ease-in-out;
-}
-.show {
-  display: block;
-  opacity: 1;
-  transition: 0.5s ease-in-out;
+app-small-bookdetail {
+  height: max-content;
 }
 
 @media screen and (max-width: 600px) {

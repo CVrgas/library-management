@@ -16,6 +16,7 @@ import { AccountComponent } from './components/account/account.component';
 import { AuthGuard } from './service/auth/auth.guard';
 import { BookComponent } from './components/smalls/book/book.component';
 import { MybooksComponent } from './components/mybooks/mybooks.component';
+import { SBookdetailComponent } from './components/smalls/small-bookdetail/small-bookdetail.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { MybooksComponent } from './components/mybooks/mybooks.component';
     AccountComponent,
     BookComponent,
     MybooksComponent,
+    SBookdetailComponent,
   ],
   imports: [
     BrowserModule,

@@ -2,49 +2,45 @@
   position: absolute;
   top: 0%;
   bottom: 0;
-  width: 100%;
   left: 0;
+  width: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 5px;
   display: flex;
+  font-size: 25px;
 }
 .detailbox .thisbook {
   position: relative;
-  /* background-color: var(--three); */
   background-color: white;
   margin: auto;
-  padding: 25px;
+  padding: 30px;
   border-radius: 10px;
   width: 70%;
   animation: 0.2s Show linear;
   max-height: 80dvh;
+  overflow-y: scroll;
+}
+.detailbox .thisbook h1 {
+  font-size: 1.2em;
 }
 .thisbook p {
   text-align: start;
   display: block;
-  padding-left: 40px;
   color: var(--four);
   font-weight: 600;
+  font-size: 1em;
 }
-.otro {
-  /* background-color: rgba(255, 255, 255, 0.7);
-  border-radius: 15px;
-  padding: 10px; */
-}
+
 .thisbook span {
-  font-size: 25px;
+  font-size: 0.6em;
   font-weight: 800;
   text-transform: capitalize;
   color: var(--five);
 }
 .thisbook .description {
-  max-height: 40dvh;
-  overflow: scroll;
+  text-align: justify;
 }
-/* .thisbook p span::after {
-  content: "\A";
-  white-space: pre;
-} */
+
 .thisbook .contact {
   padding: 5px 15px;
   border: 2px solid var(--three);
@@ -54,7 +50,7 @@
   border-radius: 5px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  font-size: 15px;
+  font-size: 0.75em;
   transition: 1s;
 }
 .thisbook .contact:hover {
@@ -70,16 +66,29 @@
   right: 5px;
   border: 50px;
   padding: 5px 15px;
-  background-color: var(--five);
-  color: white;
+  color: black;
   border-radius: 100%;
   border: 0;
   transition: 0.5s;
+  background-color: transparent;
 }
 .closeBtn:hover {
-  scale: 1.1;
+  scale: 1.2;
   color: var(--five);
-  background-color: transparent;
+  transform: rotate(90deg);
+}
+@media screen and (max-width: 600px) {
+  .detailbox {
+    font-size: 15px;
+  }
+  .detailbox .thisbook {
+    padding: 10px 25px 20px 20px;
+    width: 95%;
+  }
+  .thisbook span::after {
+    content: "\a";
+    white-space: pre;
+  }
 }
 @keyframes Show {
   from {

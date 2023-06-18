@@ -7,45 +7,17 @@ import { AppService } from 'src/app/service/Api/app.service';
   templateUrl: './account.component.html',
   styleUrls: ['./account.component.css'],
 })
-export class AccountComponent implements OnInit, AfterViewInit {
-  ngOnInit(): void {
-    for (let index = 1; index < 40; index++) {
-      let new_item = { id: index, text: `item numero ${index}` };
-      this.items.push(new_item);
-    }
-  }
-  ngAfterViewInit(): void {
-    this.loadItems();
-  }
-
-  items: any = [];
-  ItemPerPage: number = 5;
-  actual_page: number = 1;
-
-  previous() {
-    if (this.actual_page >= 2) {
-      this.actual_page--;
-      this.loadItems();
-    }
-  }
-  next() {
-    if (this.actual_page <= this.items.length / 5) {
-      this.actual_page++;
-      this.loadItems();
-    }
-  }
-
-  loadItems() {
-    let list = document.querySelectorAll('.my-pagiantion .item');
-
-    let beginAt = this.ItemPerPage * (this.actual_page - 1);
-    let endAt = this.ItemPerPage * this.actual_page - 1;
-
-    list.forEach((item, key) => {
-      (item as HTMLElement).style.display = 'none';
-      if (key >= beginAt && key <= endAt) {
-        (item as HTMLElement).style.display = 'block';
-      }
-    });
+export class AccountComponent {
+  book: Book = {
+    id: 1,
+    title: 'back legend',
+    author: 'cristian vargas',
+    year: 2021,
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+    genres: 'action, romance',
+  };
+  say(action: string) {
+    console.log('Emitted, ' + action);
   }
 }
