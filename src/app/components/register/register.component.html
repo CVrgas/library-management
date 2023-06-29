@@ -7,7 +7,6 @@
           type="text"
           id="firstname"
           placeholder="first name"
-          class="form-control"
           formControlName="firstname"
           required
         />
@@ -26,7 +25,6 @@
           type="text"
           id="lastname"
           placeholder="last name"
-          class="form-control"
           formControlName="lastname"
           required
         />
@@ -46,7 +44,6 @@
         type="email"
         id="email"
         placeholder="abc@example.com"
-        class="form-control"
         formControlName="email"
         required
       />
@@ -65,7 +62,6 @@
         type="password"
         id="password"
         placeholder="Password"
-        class="form-control"
         formControlName="password"
         required
       />
@@ -84,7 +80,6 @@
         type="password"
         id="confirmPassword"
         placeholder="Password"
-        class="form-control"
         formControlName="confirmPassword"
         required
       />
@@ -105,15 +100,14 @@
           registerForm.controls['confirmPassword'].valid
         "
       >
-        no same password
+        password not match
       </p>
     </div>
     <p class="errorMsg" id="errorMsg"></p>
     <button type="submit" class="btn">Log In</button>
     <hr />
     <div class="links">
-      <a href="login">have account?</a>
-      <a href="/register">Sign Up</a>
+      <a href="login">have an account?</a>
     </div>
   </form>
 </div>

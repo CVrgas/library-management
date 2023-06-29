@@ -27,6 +27,10 @@ const routes: Routes = [
     component: RegisterComponent,
   },
   {
+    path: 'user',
+    component: UserComponent,
+  },
+  {
     path: 'mybooks',
     component: MybooksComponent,
     canActivate: [AuthGuard],

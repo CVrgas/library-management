@@ -23,19 +23,15 @@ export class LoginComponent {
   });
 
   onSubmit() {
-    const wrongInput = document.getElementById('notfound');
-    wrongInput.style.opacity = '0';
+    const notification = document.getElementById('notify');
+    notification.innerText = ' ';
     if (this.loginForm.status == 'INVALID') {
       return;
     }
-    let request: LogInRequest = {
-      Email: this.loginForm.value.Email,
-      Password: this.loginForm.value.Password,
-    };
     this.appService.LogIn(this.loginForm.value).subscribe(
       (response) => {
         if (response.status == 204) {
-          this.notfound('We couldnt find an account that matches');
+          this.NotifyError('We couldnt find an account that matches');
           return;
         }
         if (response.status == 200) {
@@ -43,22 +39,20 @@ export class LoginComponent {
           this.router.navigate(['/home']);
           return;
         }
-        console.error('error ocurred, try again');
       },
       (error) => {
         if (error.status === 0) {
-          this.notfound('No internet connection');
-          this.LocalConnection();
+          this.NotifyError('No internet connection');
+          // this.LocalConnection();
         }
       }
     );
   }
-  notfound(msg: string) {
-    console.error(msg);
-    const MsgElement = document.getElementById('notfound');
+  NotifyError(msg: string) {
+    const MsgElement = document.getElementById('notify');
     MsgElement.innerText = msg;
-    MsgElement.style.opacity = '1';
   }
+
   LocalConnection() {
     this.Auth.logIn('389');
     this.router.navigate(['/home']);

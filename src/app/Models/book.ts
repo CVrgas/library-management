@@ -6,8 +6,3 @@ export interface Book {
   description: string;
   genres: string;
 }
-export interface Relation {
-  id: number;
-  userId: number;
-  bookId: number;
-}

@@ -1,6 +1,7 @@
 .container-fluid {
   max-width: 80%;
   padding-top: 60px;
+  font-size: 20px;
 }
 .container-fluid form {
   margin: auto;
@@ -9,33 +10,86 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
   border-radius: 15px;
   max-width: 400px;
 }
+
 .container-fluid form h2 {
   text-transform: capitalize;
   margin-bottom: 20px;
 }
-.container-fluid .form-control {
-  font-size: 20px;
-  border-radius: 0;
-  padding: 10px 20px;
-  border: 1px solid var(--four);
-  border-radius: 10px;
-  background-color: transparent;
+.container-fluid form div {
+  width: 80%;
 }
-.notfound {
-  opacity: 0;
+.inputs {
+  position: relative;
+  height: 50px;
+  margin-top: 20px;
+}
+.inputs input {
+  position: relative;
+  font-size: 1em;
+  background-color: transparent;
+  outline: 0;
+  border: 0;
+  width: 100%;
+  height: 100%;
+  padding: 20px 5px 5px 10px;
+  z-index: 5;
+}
+
+.inputs label {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  font-size: 1em;
   transition: 0.2s;
-  color: rgb(205, 40, 40);
-  border: 1px solid lime;
-  margin-bottom: 0;
+  z-index: 11;
+  width: 100%;
+  text-align: start;
+  padding-left: 10px;
+}
+.inputs i {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 3px;
+  background-color: var(--three);
+  transition: 0.2s;
+  border-radius: 5px;
+}
+.inputs input:not(:placeholder-shown) ~ label,
+.inputs input:focus ~ label {
+  font-size: 0.8em;
+  transform: translateY(-35px);
+}
+.inputs input:not(:placeholder-shown) ~ i,
+.inputs input:focus ~ i {
+  height: 70%;
+}
+.inputs input:-webkit-autofill,
+.inputs input:-webkit-autofill:hover,
+.inputs input:-webkit-autofill:focus,
+.inputs input:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s;
+}
+.notify {
+  color: red;
+  text-align: justify;
+  width: 80%;
+  margin: 20px auto;
+  padding: 0 10px;
+  font-size: 0.8em;
+  transition: 0.2s;
+}
+.notify:empty {
+  height: 0;
 }
 .btn {
   color: black;
   font-weight: 600;
-  font-size: 20px;
+  font-size: 0.8em;
   width: 60%;
   background-color: var(--two);
   padding: 10px 20px;
@@ -49,16 +103,16 @@
   display: flex;
   margin: 10px 0;
   justify-content: space-between;
-}
-
-.InputError {
-  width: max-content;
-  color: rgb(205, 40, 40);
-  animation: ShowError 0.1s linear;
+  font-size: 0.8em;
 }
 
 @keyframes ShowError {
   from {
     opacity: 0;
+  }
+}
+@media screen and (max-width: 600px) {
+  .container-fluid form div {
+    width: 95%;
   }
 }

@@ -5,22 +5,25 @@
   left: 0;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.5);
-  border-radius: 5px;
   display: flex;
-  font-size: 25px;
+  font-size: 20px;
 }
-.detailbox .thisbook {
+.detailbox .wrapper {
   position: relative;
   background-color: white;
   margin: auto;
-  padding: 30px;
+  padding: 15px 5px 10px 20px;
   border-radius: 10px;
-  width: 70%;
+  width: 90%;
   animation: 0.2s Show linear;
-  max-height: 80dvh;
-  overflow-y: scroll;
 }
-.detailbox .thisbook h1 {
+.detailbox .thisbook {
+  overflow-y: auto;
+  max-height: 70dvh;
+  padding-right: 30px;
+}
+
+.wrapper h1 {
   font-size: 1.2em;
 }
 .thisbook p {
@@ -32,34 +35,16 @@
 }
 
 .thisbook span {
-  font-size: 0.6em;
+  font-size: 0.8em;
   font-weight: 800;
   text-transform: capitalize;
   color: var(--five);
+  padding-right: 10px;
 }
 .thisbook .description {
   text-align: justify;
 }
 
-.thisbook .contact {
-  padding: 5px 15px;
-  border: 2px solid var(--three);
-  background-color: transparent;
-  color: black;
-  font-weight: 600;
-  border-radius: 5px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  font-size: 0.75em;
-  transition: 1s;
-}
-.thisbook .contact:hover {
-  transform: translateY(-5px);
-}
-.thisbook .contact:active {
-  transform: scale(0.9);
-  transition: 0.1s;
-}
 .closeBtn {
   position: absolute;
   top: 5px;
@@ -77,17 +62,64 @@
   color: var(--five);
   transform: rotate(90deg);
 }
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: auto;
+}
+.buttons .contact {
+  position: relative;
+  padding: 5px 15px;
+  border: 2px solid var(--three);
+  background-color: transparent;
+  color: black;
+  font-weight: 600;
+  border-radius: 5px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.75em;
+  transition: 1s;
+  z-index: 2;
+}
+.thisbook .contact::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  transform: translateY(30px);
+  z-index: -1;
+  transition: 0.5s;
+}
+.thisbook .contact:hover::before {
+  background-color: var(--three);
+  transform: translateY(0px);
+}
+.thisbook .contact:active {
+  transform: scale(0.95);
+  transition: 0.1s;
+}
+
 @media screen and (max-width: 600px) {
   .detailbox {
     font-size: 15px;
   }
+  .detailbox .wrapper {
+    width: 97%;
+  }
   .detailbox .thisbook {
-    padding: 10px 25px 20px 20px;
-    width: 95%;
+    padding: 5px 10px 20px 0px;
   }
   .thisbook span::after {
     content: "\a";
     white-space: pre;
+  }
+  .buttons {
+    width: 100%;
+    justify-content: center;
+    gap: 10px;
   }
 }
 @keyframes Show {

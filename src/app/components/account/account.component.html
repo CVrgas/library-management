@@ -1,5 +1,58 @@
-<app-small-bookdetail
-  [book]="book"
-  (action)="say($event)"
-></app-small-bookdetail>
-<app-book [book]="book"></app-book>
+<div class="container">
+  <h1>My Account</h1>
+  <hr />
+  <form
+    class="user_details"
+    [formGroup]="InformationChangeForm"
+    (ngSubmit)="changeUserInformation()"
+  >
+    <div>
+      <label for="firstName">first name:</label>
+      <input type="text" id="firstName" formControlName="firstName" />
+      <i></i>
+    </div>
+    
+    <div>
+      <label for="lastName">last name:</label>
+      <input type="text" id="lastName" formControlName="lastName" />
+      <i></i>
+    </div>
+
+    <div>
+      <label for="email">Email:</label>
+      <input type="email" id="email" formControlName="email" />
+      <i></i>
+    </div>
+
+    <div>
+      <button type="submit">Submit</button>
+    </div>
+    <div class="error" id="error">
+      <i id="errorText" class="fa-solid fa-circle-exclamation"></i>
+    </div>
+  </form>
+  <hr />
+  <form
+    class="change_password_form"
+    [formGroup]="passwordChangeForm"
+    (ngSubmit)="changePassword()"
+  >
+    <div>
+      <label for="password">new password:</label>
+      <input type="password" name="" id="password" formControlName="password" />
+    </div>
+
+    <div>
+      <label for="Confirm">confirm password:</label>
+      <input type="password" name="" id="Confirm" formControlName="confirm" />
+    </div>
+
+    <div>
+      <button type="submit">Change Password</button>
+    </div>
+
+    <div class="error" id="error">
+      <i class="fa-solid fa-circle-exclamation" id="errorText2"></i>
+    </div>
+  </form>
+</div>

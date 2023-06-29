@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +16,8 @@ import { AuthGuard } from './service/auth/auth.guard';
 import { BookComponent } from './components/smalls/book/book.component';
 import { MybooksComponent } from './components/mybooks/mybooks.component';
 import { SBookdetailComponent } from './components/smalls/small-bookdetail/small-bookdetail.component';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { SBookdetailComponent } from './components/smalls/small-bookdetail/small
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     AppRoutingModule,
     HttpClientModule,

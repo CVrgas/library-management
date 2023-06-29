@@ -7,26 +7,28 @@
         type="text"
         placeholder="Search tittle, year or author"
       />
-      <button type="submit" class="btn" (click)="send()">
+      <button type="submit" class="btn" (click)="Search()">
         <i class="fa-solid fa-magnifying-glass"></i>
       </button>
     </div>
-    <p class="msg" id="msg"></p>
+    <p class="msg" id="connection-msg"></p>
   </div>
   <!-- result window -->
-  <div class="result" id="result">
+  <div
+    class="result"
+    id="result"
+    *ngIf="ShowResponse"
+    [@HideNShow]="IsData ? 'data' : 'notData'"
+  >
     <!-- 404 -->
-    <div class="notfound" id="notfound">
-      <h1>No Found, try again</h1>
-    </div>
+    <h1 class="404" *ngIf="!IsData">No Found, try again</h1>
 
     <!-- 200 -->
-    <div class="found" id="found">
+    <div class="found" id="found" *ngIf="IsData">
       <app-small-bookdetail
         *ngFor="let book of books"
         (click)="showDetails(book)"
         [book]="book"
-        (action)="say($event)"
       ></app-small-bookdetail>
     </div>
   </div>

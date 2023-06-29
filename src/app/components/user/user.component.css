@@ -1,0 +1,190 @@
+.container {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  gap: 5px;
+}
+.header {
+  width: 100%;
+  background-color: var(--one);
+  border-radius: 30px;
+  text-align: start;
+  padding-left: 50px;
+  position: relative;
+  overflow: hidden;
+}
+.header::before {
+  content: "";
+  position: absolute;
+  width: 15%;
+  height: 20%;
+  background-color: var(--five);
+  right: 50px;
+  top: 20px;
+  transform: rotate(135deg);
+  z-index: 10;
+}
+.header::after {
+  content: "";
+  position: absolute;
+  width: 15%;
+  height: 20%;
+  background-color: var(--five);
+  right: -5px;
+  top: 0px;
+  transform: rotate(135deg);
+  z-index: 10;
+  /* border-radius: 5px; */
+}
+.header h1 {
+  z-index: 1;
+}
+.container section {
+  background-color: var(--one);
+  min-width: 325px;
+  padding: 10px 20px;
+  margin: 10px auto;
+  font-size: 20px;
+  display: flex;
+  gap: 10px;
+  border-radius: 5px;
+}
+.container section label {
+  margin: auto;
+}
+.container section input {
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: 0.3s;
+  margin: auto;
+  background-color: rgba(64, 224, 208, 0.5);
+  border: 0;
+  outline: 0;
+}
+.container section input:focus {
+  width: 150px;
+}
+.container section input:not(:focus) {
+  width: 0;
+  background-color: transparent;
+}
+.container section input:not(:placeholder-shown) {
+  width: 150px;
+  background-color: rgba(64, 224, 208, 0.5);
+}
+.container section button {
+  padding: 5px;
+  font-size: 0.8em;
+  border-radius: 5px;
+  border: 1px solid black;
+  position: relative;
+  overflow: hidden;
+  z-index: 10;
+  background-color: transparent;
+}
+.container section button::before {
+  inset: 0px;
+  opacity: 0;
+  content: "";
+  z-index: -1;
+  transition: 0.1s;
+  position: absolute;
+  background-color: red;
+  transform: translateY(35px);
+}
+.container section button:hover::before {
+  transform: translateY(0px);
+  opacity: 1;
+}
+
+.container section .subscribeForm {
+  width: 300px;
+  height: 100px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(45%, 1fr));
+  gap: 5px;
+}
+.container section .subscribeForm div {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.container section .subscribeForm label {
+  margin: auto;
+  height: 80%;
+  text-transform: capitalize;
+}
+.container section .subscribeForm input[type="number"] {
+  margin: auto;
+  width: 70px;
+  height: 80%;
+}
+.container section .subscribeForm input[type="number"]:not(:focus) {
+  background-color: rgba(64, 224, 208, 0.5);
+}
+.container section .subscribeForm p {
+  font-size: 0.7em;
+  padding: 0;
+  margin: auto;
+  color: red;
+}
+.container section .subscribeForm button {
+  height: 75%;
+  font-size: 0.6em;
+  font-weight: 600;
+  width: 100%;
+  margin: auto;
+}
+
+.container section:last-child {
+  width: 100%;
+  padding: 15px 30px;
+  flex-direction: column;
+}
+.container section:last-child form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(45%, 1fr));
+  gap: 5px;
+  width: 100%;
+}
+.container section:last-child form div {
+  display: flex;
+  flex-direction: column;
+}
+.container section:last-child form label {
+  text-align: start;
+  width: 100%;
+  font-size: 0.8em;
+}
+.container section:last-child form input {
+  padding: 2px 10px;
+  font-size: 0.8em;
+  background-color: rgba(64, 224, 208, 0.5);
+  border: 0;
+  outline: 0;
+  width: 100%;
+}
+.container section:last-child form button {
+  width: 50%;
+  margin: auto;
+  font-size: 0.6em;
+  font-weight: 600;
+}
+.container section:last-child form p {
+  font-size: 0.7em;
+  padding: 0;
+  margin: auto;
+  color: red;
+}
+
+.content {
+  border: 1px solid lime;
+  width: 50%;
+  position: relative;
+}
+.content > * {
+  font-size: 0.6em;
+  border: 1px solid lime;
+  overflow: hidden;
+  position: absolute;
+}

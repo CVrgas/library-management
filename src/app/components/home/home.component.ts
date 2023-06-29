@@ -1,81 +1,79 @@
+import {
+  style,
+  trigger,
+  state,
+  transition,
+  animate,
+} from '@angular/animations';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { timeout } from 'rxjs';
 import { Book } from 'src/app/Models/book';
 import { AppService } from 'src/app/service/Api/app.service';
+
+//angular animation
+const HideNShow = trigger('HideNShow', [
+  state(
+    'data',
+    style({
+      height: '70dvh',
+    })
+  ),
+  state(
+    'notData',
+    style({
+      height: '10dvh',
+    })
+  ),
+  transition('* => notData', [animate('0.5s ease-out')]),
+  transition('* => data', [animate('0.5s ease-in')]),
+]);
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
+  animations: [HideNShow],
 })
 export class HomeComponent {
   constructor(private appService: AppService, private router: Router) {}
 
-  searchArg = '';
-  books: Book[] | null;
+  searchArg: string | null = null;
+  books: Book[] | null = [];
+  IsData: boolean = false;
+  ShowResponse: boolean = false;
 
-  send() {
-    if (this.searchArg == '') {
+  Search() {
+    if (this.searchArg === null) {
       return;
     }
 
-    this.appService.GetBookByArg(this.searchArg).subscribe(
+    this.appService.SearchBookAsync(this.searchArg).subscribe(
       (Response) => {
         if (Response.length <= 0) {
           this.books = null;
-          this.DOM_management();
+          this.ShowResponse = true;
+          this.IsData = false;
           return;
         }
-
         this.books = Response;
-        this.DOM_management();
+        this.ShowResponse = true;
         setTimeout(() => {
-          this.loadItems();
-        }, 500);
+          this.IsData = true;
+        }, 1);
       },
       (e: HttpErrorResponse) => {
         if (e.status === 0) {
           this.ErrorMsg('no internet connection');
+          this.ShowResponse = false;
         }
       }
     );
   }
 
-  DOM_management() {
-    console.log('x: 1');
-    if (this.books === null) {
-      console.log('x: 2');
-
-      const result = document.getElementById('result');
-      const notfound = document.getElementById('notfound');
-      const found = document.getElementById('found');
-
-      notfound.style.display = 'flex';
-      found.style.display = 'none';
-      result.style.display = 'flex';
-      setTimeout(() => {
-        result.style.height = '150px';
-      }, 1);
-      return;
-    }
-
-    const result = document.getElementById('result');
-    const notfound = document.getElementById('notfound');
-    const found = document.getElementById('found');
-    notfound.style.display = 'none';
-    found.style.display = 'flex';
-    result.style.display = 'flex';
-
-    setTimeout(() => {
-      result.style.height = '80dvh';
-    }, 1);
-  }
   ErrorMsg(text: string) {
-    const msgElement = document.getElementById('msg');
+    const msgElement = document.getElementById('connection-msg');
     msgElement.innerText = text;
-    msgElement.style.opacity = '1';
   }
 
   //Pagination Code
@@ -110,9 +108,6 @@ export class HomeComponent {
   }
 
   // Child Element Funtions
-  say(action: string) {
-    console.log('Emitted, ' + action);
-  }
   book: any;
   showDetails(book: Book) {
     this.book = book;

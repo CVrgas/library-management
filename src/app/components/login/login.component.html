@@ -1,46 +1,27 @@
 <div class="container-fluid">
   <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <h2>log in</h2>
-    <div class="email">
-      <input
-        type="text"
-        id="email"
-        placeholder="Email"
-        class="form-control"
-        formControlName="Email"
-      />
-      <p
-        class="InputError"
-        *ngIf="
-          loginForm.controls['Email'].invalid &&
-          loginForm.controls['Email'].touched
-        "
-      >
-        Enter valid email
-      </p>
+
+    <div class="inputs">
+      <input type="text" id="email" placeholder=" " formControlName="Email" />
+      <i></i>
+      <label for="email">Email</label>
     </div>
-    <div class="password">
+    <div class="inputs">
       <input
         type="password"
         id="password"
-        placeholder="Password"
-        class="form-control"
         formControlName="Password"
+        placeholder=" "
       />
-      <p
-        class="InputError"
-        *ngIf="
-          loginForm.controls['Password'].invalid &&
-          loginForm.controls['Password'].touched
-        "
-      >
-        Please enter password
-      </p>
+      <i></i>
+      <label for="password">Password</label>
     </div>
-    <p class="notfound" id="notfound">
-      wrong password or email, please try again
-    </p>
+
+    <p class="notify" id="notify"></p>
+
     <button type="submit" class="btn">Log In</button>
+
     <hr style="width: 90%" />
     <div class="links">
       <a href="#">forget password?</a>
