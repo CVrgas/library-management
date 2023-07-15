@@ -1,12 +1,5 @@
-import {
-  AfterContentInit,
-  AfterViewInit,
-  Component,
-  Input,
-  OnInit,
-} from '@angular/core';
+import { AfterViewInit, Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { AccountService } from 'src/app/service/account/account.service';
 import { AuthService } from 'src/app/service/auth/auth.service';
 
 @Component({
@@ -16,10 +9,9 @@ import { AuthService } from 'src/app/service/auth/auth.service';
 })
 export class NavbarComponent implements AfterViewInit {
   constructor(private router: Router, private Auth: AuthService) {}
-  ngAfterViewInit(): void {
-  }
+  ngAfterViewInit(): void {}
 
-  @Input() status;
+  @Input() LogStatus;
 
   logout() {
     this.Auth.logOut();

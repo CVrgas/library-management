@@ -23,26 +23,45 @@ export class BookComponent {
         window.alert('Downloading Book...\n\n (no real download happening)');
         break;
 
-      case 'rent':
-        if (localStorage.getItem('token')) {
-          this.Subs_service.SubscribeBookAsync(this.book.id).subscribe(
-            (res) => {},
-            (error) => {
-              console.log(' Unknow error renting book');
-            }
-          );
-        }
-
-        this.router.navigate(['/mybooks']);
+      case 'Rent':
+        this.Subscribe();
         break;
 
       case 'contact':
         console.error('contact no implemented yet');
         break;
 
+      case 'Unrent':
+        this.Unsubscribe();
+        break;
+
       default:
         console.error('Action not found');
         break;
+    }
+  }
+  Unsubscribe() {
+    this.Subs_service.DeleteSubscriptionAsync(this.book.id).subscribe(
+      (res) => {
+        this.closeWindow();
+        this.router.navigate(['/mybooks']);
+        console.log(res);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+  Subscribe() {
+    if (localStorage.getItem('token')) {
+      this.Subs_service.SubscribeBookAsync(this.book.id).subscribe(
+        (res) => {
+          this.router.navigate(['/mybooks']);
+        },
+        (error) => {
+          console.log(' Unknow error renting book');
+        }
+      );
     }
   }
 }

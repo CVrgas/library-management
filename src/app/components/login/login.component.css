@@ -116,3 +116,25 @@
     width: 95%;
   }
 }
+.local-help {
+  background-color: var(--one);
+  width: max-content;
+  padding: 25px 15px;
+  font-size: 0.6em;
+  position: absolute;
+  bottom: 1%;
+  right: 1%;
+  border-radius: 20px;
+}
+.local-help h1 {
+  font-size: 1.5em;
+}
+.local-help div {
+}
+.local-help div p {
+  margin: 0;
+  text-align: start;
+}
+.local-help span {
+  font-size: 1.2em;
+}

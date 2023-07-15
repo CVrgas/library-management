@@ -7,13 +7,18 @@
       <p><span>author:</span>{{ book.author }}</p>
       <p class="description"><span>description:</span>{{ book.description }}</p>
       <p><span>year:</span>{{ book.year }}</p>
-      <p><span>status:</span>status</p>
+      <p *ngIf="book.subsStatus"><span>status:</span>{{ book.subsStatus }}</p>
       <p><span>genres:</span>{{ book.genres }}</p>
       <div class="buttons">
         <button class="contact" (click)="EventHandler('contact')">
           contact library
         </button>
-        <button class="contact" (click)="EventHandler('rent')">rent</button>
+        <button
+          class="contact"
+          (click)="EventHandler(book.subsStatus ? 'Unrent' : 'Rent')"
+        >
+          {{ book.subsStatus ? "Unrent" : "Rent" }}
+        </button>
         <button class="contact" (click)="EventHandler('download')">
           download
         </button>

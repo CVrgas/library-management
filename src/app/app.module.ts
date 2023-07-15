@@ -18,6 +18,9 @@ import { MybooksComponent } from './components/mybooks/mybooks.component';
 import { SBookdetailComponent } from './components/smalls/small-bookdetail/small-bookdetail.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule } from '@angular/router';
+import { OfflineAlertComponent } from './components/smalls/offline-alert/offline-alert.component';
+import { FloatingBackonlineComponent } from './components/smalls/floating-backonline/floating-backonline.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +35,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BookComponent,
     MybooksComponent,
     SBookdetailComponent,
+    OfflineAlertComponent,
+    FloatingBackonlineComponent,
   ],
   imports: [
     BrowserModule,

@@ -10,6 +10,8 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Book } from 'src/app/Models/book';
 import { AppService } from 'src/app/service/Api/app.service';
+import { DataService } from 'src/app/service/DataService/data-service.service';
+import { OfflineService } from 'src/app/service/offlineService/offline.service';
 
 //angular animation
 const HideNShow = trigger('HideNShow', [
@@ -36,12 +38,22 @@ const HideNShow = trigger('HideNShow', [
   animations: [HideNShow],
 })
 export class HomeComponent {
-  constructor(private appService: AppService, private router: Router) {}
+  constructor(
+    private appService: AppService,
+    private offlineService: OfflineService,
+    private router: Router,
+    private dataService: DataService
+  ) {
+    this.dataService.currentOStatus.subscribe(
+      (status) => (this.OfflineStatus = status)
+    );
+  }
 
   searchArg: string | null = null;
   books: Book[] | null = [];
   IsData: boolean = false;
   ShowResponse: boolean = false;
+  OfflineStatus: Boolean;
 
   Search() {
     if (this.searchArg === null) {
@@ -64,11 +76,23 @@ export class HomeComponent {
       },
       (e: HttpErrorResponse) => {
         if (e.status === 0) {
-          this.ErrorMsg('no internet connection');
-          this.ShowResponse = false;
+          // this.ErrorMsg('no internet connection');
+          this.dataService.ShowAlert();
+          // this.ShowResponse = false;
         }
       }
     );
+  }
+  LocalSearch() {
+    console.log('Local');
+    this.books = this.offlineService.searchBook(this.searchArg);
+    if (this.books.length <= 0) {
+      this.ShowResponse = true;
+      this.IsData = false;
+    } else {
+      this.ShowResponse = true;
+      this.IsData = true;
+    }
   }
 
   ErrorMsg(text: string) {

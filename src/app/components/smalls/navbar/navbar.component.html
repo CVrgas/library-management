@@ -14,11 +14,11 @@
     </button>
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
       <div class="navbar-nav">
-        <a class="nav-link" href="login" *ngIf="!status">Log in</a>
-        <a class="nav-link" href="register" *ngIf="!status">Sign up</a>
-        <a class="nav-link" href="account" *ngIf="status">account</a>
-        <a class="nav-link" href="mybooks" *ngIf="status">my books</a>
-        <a class="nav-link" href="login" *ngIf="status" (click)="logout()"
+        <a class="nav-link" href="login" *ngIf="!LogStatus">Log in</a>
+        <a class="nav-link" href="register" *ngIf="!LogStatus">Sign up</a>
+        <a class="nav-link" href="account" *ngIf="LogStatus">account</a>
+        <a class="nav-link" href="mybooks" *ngIf="LogStatus">my books</a>
+        <a class="nav-link" href="login" *ngIf="LogStatus" (click)="logout()"
           >Sign out</a
         >
       </div>

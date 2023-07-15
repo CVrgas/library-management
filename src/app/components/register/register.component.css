@@ -16,16 +16,15 @@
   text-transform: capitalize;
   margin-bottom: 20px;
 }
-
 .name input,
 .email input,
 .password input {
   width: 100%;
   font-size: 20px;
   border-radius: 0;
-  padding: 10px 20px;
+  padding: 10px 10px 3px;
   border: solid var(--four);
-  border-width: 2px 2px 5px 2px;
+  border-width: 1px 1px 4px 1px;
   border-radius: 5px;
   background-color: transparent;
 }
@@ -34,7 +33,7 @@
 .password input:focus {
   outline: none;
   border: solid var(--five);
-  border-width: 2px 2px 5px 2px;
+  border-width: 1px 1px 3px 1px;
 }
 .notfound {
   opacity: 0;
@@ -87,7 +86,6 @@
   display: flex;
   justify-content: space-between;
 }
-
 .name div {
   width: 48%;
   display: flex;
@@ -100,7 +98,6 @@
   text-transform: capitalize;
   padding-left: 5px;
 }
-
 .errorMsg {
   color: rgb(190, 11, 11);
   font-weight: 600;
@@ -108,7 +105,6 @@
   margin-bottom: 0;
   transition: 0.2s;
 }
-
 .password,
 .email {
   width: 100%;

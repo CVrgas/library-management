@@ -8,15 +8,18 @@ import { AppService } from 'src/app/service/Api/app.service';
   templateUrl: './mybooks.component.html',
   styleUrls: ['./mybooks.component.css'],
 })
-export class MybooksComponent implements OnInit {
-  constructor(private service: AppService) {}
-  async ngOnInit(): Promise<void> {
-    await this.service.GetUserBooksAsync().subscribe(
-      (res) => {
-        res.forEach((element) => {
-          element.author = element.author.replace(/-/g, ', ');
-          element.author = element.author.replace(', ,', ', ');
+export class MybooksComponent {
+  constructor(private service: AppService) {
+    // this.service.GetUserBooksAsync().
+
+    this.service.GetUserBooksAsync().subscribe(
+      (res: Book[]) => {
+        console.log(res);
+        res.map((book) => {
+          book.author = book.author.replace(/-/g, ', ').replace(', ,', ', ');
+          book.subsStatus = this.SetStatusCode(book.subsStatus);
         });
+        res.sort();
         this.books = res;
       },
       (error) => {
@@ -28,6 +31,7 @@ export class MybooksComponent implements OnInit {
       }
     );
   }
+
   books: Book[] = [];
   book: any;
 
@@ -38,5 +42,11 @@ export class MybooksComponent implements OnInit {
 
   onClose() {
     this.book = null;
+  }
+  SetStatusCode(code: any) {
+    if (code === 2) {
+      return true;
+    }
+    return false;
   }
 }

@@ -13,6 +13,7 @@ import { LogInRequest, User } from '../../Models/user';
 import { AuthService } from 'src/app/service/auth/auth.service';
 import { Router } from '@angular/router';
 import { from } from 'rxjs';
+import { DataService } from 'src/app/service/DataService/data-service.service';
 
 @Component({
   selector: 'app-register',
@@ -23,7 +24,8 @@ export class RegisterComponent {
   constructor(
     private service: AppService,
     private Auth: AuthService,
-    private router: Router
+    private router: Router,
+    private dataService: DataService
   ) {}
 
   MatchPass: ValidatorFn = (
@@ -90,6 +92,7 @@ export class RegisterComponent {
       (error) => {
         if (error.status === 0) {
           this.notFound('No internet connection');
+          this.dataService.ShowAlert();
           return;
         }
         if (error.status === 415) {

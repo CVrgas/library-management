@@ -5,4 +5,5 @@ export interface Book {
   author: string;
   description: string;
   genres: string;
+  subsStatus: boolean;
 }

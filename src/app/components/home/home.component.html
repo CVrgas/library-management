@@ -7,7 +7,11 @@
         type="text"
         placeholder="Search tittle, year or author"
       />
-      <button type="submit" class="btn" (click)="Search()">
+      <button
+        type="submit"
+        class="btn"
+        (click)="OfflineStatus ? LocalSearch() : Search()"
+      >
         <i class="fa-solid fa-magnifying-glass"></i>
       </button>
     </div>
